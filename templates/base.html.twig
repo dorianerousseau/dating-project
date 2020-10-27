@@ -1,12 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Appy Love{% endblock %}</title>
+
+        {% block stylesheets %}
+            <!-- External CSS -->
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/owlcarousel/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/lightcase/lightcase.css') }}">
+            <link rel="stylesheet" href="{{ asset('https://unpkg.com/aos@next/dist/aos.css') }}" />
+
+            <!-- CSS -->
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        {% endblock %}
     </head>
+
+
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+
+
+
+        {% endblock %}
+
+
+
+
+
+
+
+        {% block javascripts %}
+            <!-- External JS -->
+            <script type="text/javascript" src="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js') }}"></script>
+            <script src="{{ asset('vendor/bootstrap/popper.min.js') }}"></script>
+            <script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+            <script src="{{ asset('vendor/owlcarousel/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('vendor/stellar/jquery.stellar.js" type="text/javascript" charset="utf-8') }}"></script>
+            <script src="{{ asset('vendor/isotope/isotope.min.js') }}"></script>
+            <script src="{{ asset('vendor/lightcase/lightcase.js') }}"></script>
+            <script src="{{ asset('vendor/waypoints/waypoint.min.js') }}"></script>
+            <script src="{{ asset('https://unpkg.com/aos@next/dist/aos.js') }}"></script>
+
+            <!-- Main JS -->
+            <script src="{{ asset('js/script.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
