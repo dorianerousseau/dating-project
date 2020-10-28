@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
-class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class DefaultController extends AbstractController
 {
 
 }

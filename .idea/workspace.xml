@@ -22,6 +22,12 @@
     <list default="true" id="4e6d6268-ab26-4c1d-91e5-5abb9f2b3e01" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,10 +216,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728/-1440.102.1440.860@0.0.1366.728" timestamp="1603878387008" />
-    <state x="38" y="133" key="NewPhpClassDialog" timestamp="1603808321460">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="41" y="121" key="NewPhpClassDialog" timestamp="1603894514428">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="38" y="133" key="NewPhpClassDialog/0.0.1280.800/-278.-1080.1920.1080@0.0.1280.800" timestamp="1603808321460" />
+    <state x="41" y="121" key="NewPhpClassDialog/0.0.1366.728/1366.0.1680.969@0.0.1366.728" timestamp="1603894514428" />
     <state x="138" y="330" key="NewPhpFileDialog" timestamp="1603806854473">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
