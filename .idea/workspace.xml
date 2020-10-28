@@ -20,8 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e6d6268-ab26-4c1d-91e5-5abb9f2b3e01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/user/create.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +187,7 @@
       <updated>1603805403600</updated>
       <workItem from="1603805404882" duration="721000" />
       <workItem from="1603806535631" duration="7266000" />
-      <workItem from="1603873547353" duration="5230000" />
+      <workItem from="1603873547353" duration="19961000" />
     </task>
     <servers />
   </component>
@@ -202,6 +207,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="309" y="42" key="#Inspections" timestamp="1603900096348">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="42" key="#Inspections/0.0.1366.728/-1440.102.1440.860@0.0.1366.728" timestamp="1603900096348" />
     <state x="0" y="193" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603808361096">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -218,5 +227,13 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="138" y="330" key="NewPhpFileDialog/0.0.1280.800/-278.-1080.1920.1080@0.0.1280.800" timestamp="1603806854473" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1603898733453">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728/-1440.102.1440.860@0.0.1366.728" timestamp="1603898733453" />
+    <state x="339" y="111" key="run.anything.popup" timestamp="1603891798522">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="111" key="run.anything.popup/0.0.1366.728/-1440.102.1440.860@0.0.1366.728" timestamp="1603891798522" />
   </component>
 </project>
