@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
-class ProfileController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class ProfileController extends AbstractController
 {
 
 }
