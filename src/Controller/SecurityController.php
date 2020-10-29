@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
-class SecurityController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class SecurityController extends AbstractController
 {
 
 }
