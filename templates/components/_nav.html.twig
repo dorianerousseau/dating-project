@@ -1,10 +1,9 @@
 <!-- nav -->
-<body data-spy="scroll" data-target="#navbar" class="static-layout">
 <nav id="header-navbar" class="navbar navbar-expand-lg py-4">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center text-white" href="/">
+        <a class="navbar-brand d-flex align-items-center text-white" href="href="{{ path('index') }}">
             <!-- <h3 class="font-weight-bolder mb-0">AppyLove</h3> -->
-           <img class="logo" src="{{ asset('public/assets/appylovelogo.png') }}" alt="Logo AppyLove"/>
+           <img class="logo" src="{{ asset('assets/img/appylovelogo.png') }}" alt="Logo AppyLove"/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header"
                 aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,16 +12,16 @@
         <div class="collapse navbar-collapse" id="navbar-nav-header">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/">Art</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="about.html">Sport</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
+                    <a class="nav-link" href="blog.html">TechIT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.html">Voyage</a>
                 </li>
                 <li class="nav-item">
                     <a id="side-search-open" class="nav-link" href="#">
@@ -39,17 +38,3 @@
     </div>
 </nav>
 
-<!-- nav burger (connecté = page profil, pas connecté = button inscription & connection) -->
-<div id="side-nav" class="sidenav">
-    <a href="javascript:void(0)" id="side-nav-close">&times;</a>
-
-    <div class="sidenav-content">
-        <p>
-            Mon profil
-        </p>
-        <p>
-            <span class="fs-16 primary-color">(+68) 120034509</span>
-        </p>
-        <p>info@yourdomain.com</p>
-    </div>
-</div>

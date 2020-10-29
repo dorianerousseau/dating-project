@@ -34,6 +34,10 @@
                 </div>
             </div>
         </main>
+
+        <footer>{% include 'components/_footer.html.twig' %}</footer>
+
+
         {% block javascripts %}
             <!-- External JS -->
             <script type="text/javascript" src="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js') }}"></script>
@@ -56,6 +60,5 @@
                 ClassicEditor.create( document.querySelector( '#form_content' ) );
             </script>
         {% endblock %}
-
     </body>
 </html>

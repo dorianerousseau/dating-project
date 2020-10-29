@@ -12,18 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-
     /**
-     * Page / Action : Accueil
+     * Page : Accueil
      */
     public function index()
     {
-        # Récupérer les 10 derniers profils de la BDD ordre décroissant
+        # Récupérer les 10 derniers profils de la BDD par ordre décroissant
 
         $users = $this->getDoctrine()
         ->getRepository(User::class)
-            ->findBy([], ['id'=>'DESC'], 10);
-
+        ->findBy([], ['id'=>'DESC'], 10);
 
         return $this->render('default/index.html.twig', [
             'users' => $users
@@ -40,11 +38,13 @@ class DefaultController extends AbstractController
 
 
 
-    /**
+    /*
      * Page / Action : Hobbies
      * Permet d'afficher les articles d'une catégorie
      ** @Route("/{alias}", name="default_hobbies", methods={"GET"})
      */
+
+    /*
     public function hobbies($alias)
     {
 
@@ -59,13 +59,15 @@ class DefaultController extends AbstractController
          * (ManyToMany), je suis en mesure de récupérer
          * les utilisateurs selon leurs hobbies
          */
-        $users = $hobbies->getPosts();
+    /*
+        $users = $hobbies->getUsers();
 
 
         return $this->render('default/hobbies.html.twig', [
             'users' => $users
         ]);
     }
+    */
 
     /**
      * Page / Action : Utilisateur

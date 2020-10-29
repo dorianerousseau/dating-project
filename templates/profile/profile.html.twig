@@ -1,28 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Profil de {{ app.user.pseudo }} {% endblock %}
+{% block title %} Profil de {# {{ user.pseudo }} #} {% endblock %}
 
 {% block body %}
-    <div class="grix xs4 container">
+    <div class="container">
         <!-- afficher le message du add.flash -->
         {% for message in app.flashes('message') %}
             <div class="col-xs4">
                 <div class="p-3 my-2 rounded-2 success">{{ message }}</div>
             </div>
         {% endfor %}
-        <!-- afficher le profil -->
-        <div class="col-xs4">
-            <h1> Profil de {{ app.user.pseudo }} </h1>
+
+        <div class="d-flex align-items-start py-3"><img src="{# {{ user.featuredimage }} #}" class="img" alt="avatar">
+            <div class="pl-sm-4 pl-2" id="img-section"><h2> Profil de {# {{ user.pseudo }} #}</h2>
+                <p>{# {{ user.age ~ , ~ {{ user.city }} #} </p>
+            </div>
         </div>
-        <div class="col-xs1">Pseudo :</div>
-        <div class="col-xs3">{{ app.user.pseudo }}</div>
-        <div class="col-xs1">Bio :</div>
-        <div class="col-xs3">{{ app.user.bio }}</div>
-        <div class="col-xs1">Email :</div>
-        <div class="col-xs3">{{ app.user.email }}</div>
-        <div class="col-xs4">
-            <a href="{{ path('user_profil_modifier') }}" class="btn blue">Modifier le profil</a>
-            <a href="{{ path('user_password_modifier') }}" class="btn blue">Modifier le mot de passe</a>
-        </div>
-    </div> <!-- /.grix -->
+        <hr>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Pseudo :</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="text" value="{# {{ user.pseudo }} #}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Email :</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="text" value="{# {{ user.email }} #}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Bio :</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="textarea" value="{# {{ user.bio }} #}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <a href="{# {{ path('{id}/profil/modifier') }} #}" class="btn btn-primary btn-info btn-block">Modifier le profil</a>
+                    <a href="{# {{ path('user_password_modifier') }} #}" class="btn btn-primary btn-info btn-block">Modifier le mot de
+                        passe</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr>
 {% endblock %}

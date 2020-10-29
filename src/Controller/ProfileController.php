@@ -21,7 +21,7 @@ class ProfileController extends AbstractController
             ->getRepository(User::class)
             ->findAll();
 
-        return $this->render('profile.html.twig', [
+        return $this->render('profile/profile.html.twig', [
             'user' => $profile
         ]);
     }
@@ -29,7 +29,7 @@ class ProfileController extends AbstractController
 
     # ------- Pour modifier le profil -------
     /**
-     * @Route("/profil/modifier", name="profile_update", methods={"GET"})
+     * @Route("{id}/profil/modifier", name="profile_update", methods={"GET"})
      */
     public function editProfile(Request $request)
     {
@@ -55,7 +55,7 @@ class ProfileController extends AbstractController
 
     # ------- Pour modifier le mot de passe -------
     /**
-     * @Route("/profile/password/modifier", name="profile_password_update")
+     * @Route("/profil/password/modifier", name="profile_password_update")
      */
     public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
