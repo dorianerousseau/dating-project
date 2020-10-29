@@ -29,6 +29,11 @@ class Hobbies
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="string", length=80)
+     */
+    private $alias;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -74,6 +79,18 @@ class Hobbies
         if ($this->users->removeElement($user)) {
             $user->removeHobby($this);
         }
+
+        return $this;
+    }
+
+    public function getAlias(): ?string
+    {
+        return $this->alias;
+    }
+
+    public function setAlias(string $alias): self
+    {
+        $this->alias = $alias;
 
         return $this;
     }
