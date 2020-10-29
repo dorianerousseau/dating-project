@@ -1,0 +1,35 @@
+{%  extends "base.html.twig" %}
+
+{% block body %}
+    {# {{  dump(app.request) }} #}
+    {# {{  dump(app.request.get ('alias') }} #}
+
+    <!-- .py-5.bg-light>.container>.row>.col-md-4.mt-4 -->
+    <div class="p-3 mx-auto text-center">
+        <h1 class="display-4">{{ app.request.get('alias') |pseudo }}</h1>
+    </div>
+
+    <!-- .py-5.bg-light>.container>.row>.col-md-4.mt-4 -->
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for  user in users %}
+                    <div class="col-md-4 mt-4">
+                        <div class="card shadow-sm">
+                            <img src="{{ asset('uploads/images/'~ user.featuredImage) }}"
+                                 alt="{{ user.pseudo }}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ user.pseudo }}</h5>
+                                <a href="{{ path('default_user', {
+                                    'hobbies' : user.hobbies.alias,
+                                    'alias': user.alias,
+                                    'id' : user.id
+                                }) }}" class="btn btn-primary">Voir le profil</a>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.card -->
+                    </div> <!-- /.col-md-4 -->
+                {% endfor %}
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.py-5 -->
+{% endblock %}

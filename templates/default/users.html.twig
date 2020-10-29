@@ -1,0 +1,16 @@
+{%  extends "base.html.twig." %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-18 mx-auto">
+                <div class="jumbotron mt-4">
+                    <h1 class="display-4">{{ user.pseudo }}</h1>
+                    <img src="{{ asset('uploads/images/'~ user.featuredImage ) }}"
+                         alt="{{ user.pseudo }}" class="card-img-top">
+                    {{ user.bio | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -71,6 +71,11 @@ class User implements UserInterface
      */
     private $hobbies;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $featured_image;
+
     public function __construct()
     {
         $this->chats = new ArrayCollection();
@@ -259,6 +264,18 @@ class User implements UserInterface
     public function removeHobby(Hobbies $hobby): self
     {
         $this->hobbies->removeElement($hobby);
+
+        return $this;
+    }
+
+    public function getFeaturedImage(): ?string
+    {
+        return $this->featured_image;
+    }
+
+    public function setFeaturedImage(string $featured_image): self
+    {
+        $this->featured_image = $featured_image;
 
         return $this;
     }
