@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -51,6 +52,7 @@ class UserController extends AbstractController
             ->add('city', TextType::class)
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
+            ->add('featuredImage', FileType::class)
             ->add('submit', SubmitType::class)
             ->getForm();
 

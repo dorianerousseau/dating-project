@@ -1,7 +1,7 @@
 <!-- nav -->
 <nav id="header-navbar" class="navbar navbar-expand-lg py-4">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center text-white" href="href="{{ path('index') }}">
+        <a class="navbar-brand d-flex align-items-center text-white" href="{{ path('index') }}">
             <!-- <h3 class="font-weight-bolder mb-0">AppyLove</h3> -->
            <img class="logo" src="{{ asset('assets/img/appylovelogo.png') }}" alt="Logo AppyLove"/>
         </a>
@@ -13,23 +13,23 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'musique' }) }}">Musique</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'musique' }) }}">Musique</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'sport' }) }}">Sport</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'sport' }) }}">Sport</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'art' }) }}">Art</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'art' }) }}">Art</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'tech-it' }) }}">Tech IT</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'tech-it' }) }}">Tech IT</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'voyage' }) }}">Voyage</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'voyage' }) }}">Voyage</a>
                 </li>
                 <li class="nav-item">
                     <a id="side-search-open" class="nav-link" href="#">
@@ -41,6 +41,19 @@
                         <span class="lnr lnr-menu"></span>
                     </a>
                 </li>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="nav-link" href="{{ path('user_create') }}">Modifier le profil</a>
+                    {% endif %}
+
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                    <a class="nav-link" href="{{ path('user_create') }}">Inscription</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                {% endif %}
+
+
             </ul>
         </div>
     </div>
