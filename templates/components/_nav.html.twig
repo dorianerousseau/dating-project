@@ -44,7 +44,7 @@
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="nav-link" href="{{ path('user_create') }}">Modifier le profil</a>
+                        <a class="nav-link" href="{{ path('/user/profil/modifier') }}">Modifier le profil</a>
                     {% endif %}
 
                     <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
