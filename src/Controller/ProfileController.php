@@ -13,23 +13,16 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/profil", name="profile")
+     * @Route("/user/profil", name="profil")
      */
     public function index()
     {
-        $profile = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->findAll();
-
-        return $this->render('profile/profile.html.twig', [
-            'user' => $profile
-        ]);
+        return $this->render('profile/profile.html.twig');
     }
-
 
     # ------- Pour modifier le profil -------
     /**
-     * @Route("/profil/modifier", name="profile_update", methods={"GET"})
+     * @Route("/user/modifier/profil", name="profil_update", methods={"GET"})
      */
     public function editProfile(Request $request)
     {
@@ -44,7 +37,7 @@ class ProfileController extends AbstractController
             $em->flush();
 
             $this->addFlash('message', 'Profil mis à jour');
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('profil');
         }
 
         return $this->render('profile/editprofile.html.twig', [
@@ -55,7 +48,7 @@ class ProfileController extends AbstractController
 
     # ------- Pour modifier le mot de passe -------
     /**
-     * @Route("/profil/password/modifier", name="profile_password_update")
+     * @Route("/user/profil/password/modifier", name="profil_password_update")
      */
     public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -70,7 +63,7 @@ class ProfileController extends AbstractController
                 $em->flush();
                 $this->addFlash('message', 'Mot de passe mis à jour avec succès');
 
-                return $this->redirectToRoute('user');
+                return $this->redirectToRoute('profil');
             } else {
                 $this->addFlash('error', 'Les deux mots de passe ne sont pas identiques');
             }

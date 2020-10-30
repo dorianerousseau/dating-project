@@ -25,13 +25,13 @@ class UserController extends AbstractController
      * @Route("/membre/inscription", name="user_create", methods={"GET|POST"})
      *
      */
-    public function profil_update(Request $request, UserPasswordEncoderInterface $encoder, SluggerInterface $slugger)
+    public function create_user(Request $request, UserPasswordEncoderInterface $encoder, SluggerInterface $slugger)
     {
-        # 1. Création d'un objet user
+        # 1. Création d'un nouvel utilisateur
         $user = new User();
         $user->setRoles(['ROLE_USER']);
 
-        # 2. Création du Formulaire
+        # 2. Création du Formulaire d'inscription
         $form = $this->createFormBuilder($user)
             ->add('pseudo', TextType::class)
             ->add('age', TextType::class)
@@ -58,8 +58,6 @@ class UserController extends AbstractController
             ->add('featuredImage', FileType::class)
             ->add('submit', SubmitType::class)
             ->getForm();
-
-
 
         # 3. Récupération des infos
         $form->handleRequest($request);

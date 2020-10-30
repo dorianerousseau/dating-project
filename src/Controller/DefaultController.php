@@ -12,6 +12,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+
+    /**
+     * Page HomePage : première page
+     * @Route("/homepage", name="default_homepage", methods={"GET"})
+     */
+    public function homepage()
+    {
+        return $this->render('default/homepage.html.twig');
+    }
+
+
     /**
      * Page : Accueil
      */
@@ -32,19 +43,15 @@ class DefaultController extends AbstractController
     /**
      * Page / Action : Contact
      */
-
+    # TODO
     # public function contact()
     #{return $this->render('default/contact.html.twig');}
-
-
 
     /**
      * Page / Action : Hobbies
      * Permet d'afficher les hobbies des utilisateurs
      * @Route("/{alias}", name="default_hobbies", methods={"GET"})
      */
-
-
     public function hobbies($alias)
     {
         # Récupération des hobbies via son alias dans l'URL
@@ -67,7 +74,7 @@ class DefaultController extends AbstractController
     /**
      * Page / Action : Utilisateur
      * Permet d'afficher un utilisateur du site
-     * @Route("/user/{id}", name="default_user", methods={"GET"})
+     * @Route("/user/profil/{id}", name="default_user", methods={"GET"})
      */
     public function user($id)
     {
