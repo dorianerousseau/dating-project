@@ -47,8 +47,6 @@ class DefaultController extends AbstractController
 
     public function hobbies($alias)
     {
-
-
         # Récupération des hobbies via son alias dans l'URL
         $hobbies = $this->getDoctrine()
             ->getRepository(Hobbies::class)
@@ -59,15 +57,12 @@ class DefaultController extends AbstractController
          * (ManyToMany), je suis en mesure de récupérer
          * les utilisateurs selon leurs hobbies
          */
-
         $users = $hobbies->getUsers();
-
 
         return $this->render('default/hobbies.html.twig', [
             'users' => $users
         ]);
     }
-
 
     /**
      * Page / Action : Utilisateur
