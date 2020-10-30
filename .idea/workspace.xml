@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e6d6268-ab26-4c1d-91e5-5abb9f2b3e01" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/components/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_nav.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,9 +217,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="0" y="193" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.800/-278.-1080.1920.1080@0.0.1280.800" timestamp="1603808361096" />
-    <state x="357" y="192" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603922289919">
-      <screen x="0" y="23" width="1241" height="777" />
+    <state x="393" y="158" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604064918775">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="393" y="158" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1604064918775" />
     <state x="357" y="192" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1241.777/-278.-1057.1920.1057@0.23.1241.777" timestamp="1603922289919" />
     <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1603878387008">
       <screen x="0" y="0" width="1366" height="728" />

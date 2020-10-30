@@ -36,9 +36,22 @@ class UserController extends AbstractController
             ->add('pseudo', TextType::class)
             ->add('age', TextType::class)
             ->add('sex', ChoiceType::class, [
-                'placeholder' => 'Choose an option',
-                'required' => false,
-            ])
+                'choices' => [
+                    'Choisissez' => true,
+                    'Femme' => 'Femme',
+                    'Homme' => 'Homme',
+                    'Autres' => 'Autres'
+                ],
+                'choice_label' => function ($choice, $key, $value) {
+                    if (true === $choice) {
+                        return 'Choisissez';
+                    }
+
+                    return ($key);
+
+                }
+            ])# liste déroulante (h /f)
+
             ->add('city', TextType::class)
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
@@ -103,5 +116,6 @@ class UserController extends AbstractController
     }
 
 }
+
 
 
