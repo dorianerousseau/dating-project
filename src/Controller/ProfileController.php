@@ -29,7 +29,7 @@ class ProfileController extends AbstractController
 
     # ------- Pour modifier le profil -------
     /**
-     * @Route("{id}/profil/modifier", name="profile_update", methods={"GET"})
+     * @Route("/profil/modifier", name="profile_update", methods={"GET"})
      */
     public function editProfile(Request $request)
     {

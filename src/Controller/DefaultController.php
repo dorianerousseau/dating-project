@@ -38,17 +38,13 @@ class DefaultController extends AbstractController
 
 
 
-    /*
+    /**
      * Page / Action : Hobbies
      * Permet d'afficher les articles d'une catégorie
-     ** @Route("/{alias}", name="default_hobbies", methods={"GET"})
+     * @Route("/{alias}", name="default_hobbies", methods={"GET"})
      */
-
-    /*
     public function hobbies($alias)
     {
-
-
         # Récupération des hobbies via son alias dans l'URL
         $hobbies = $this->getDoctrine()
             ->getRepository(Hobbies::class)
@@ -59,30 +55,25 @@ class DefaultController extends AbstractController
          * (ManyToMany), je suis en mesure de récupérer
          * les utilisateurs selon leurs hobbies
          */
-    /*
         $users = $hobbies->getUsers();
-
 
         return $this->render('default/hobbies.html.twig', [
             'users' => $users
         ]);
     }
-    */
 
     /**
      * Page / Action : Utilisateur
      * Permet d'afficher un utilisateur du site
-     ** @Route("/{category}/{alias}_{id}.html", name="default_user", methods={"GET"})
-
+     * @Route("/user/{id}", name="default_user", methods={"GET"})
      */
-
     public function user($id)
     {
         $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($id);
 
-        return $this->render('default/user.html.twig', [
+        return $this->render('default/users.html.twig', [
             'user'=>$user
         ]);
     }
