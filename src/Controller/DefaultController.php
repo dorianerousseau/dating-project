@@ -40,9 +40,11 @@ class DefaultController extends AbstractController
 
     /**
      * Page / Action : Hobbies
-     * Permet d'afficher les articles d'une catégorie
+     * Permet d'afficher les hobbies des utilisateurs
      * @Route("/{alias}", name="default_hobbies", methods={"GET"})
      */
+
+
     public function hobbies($alias)
     {
         # Récupération des hobbies via son alias dans l'URL
