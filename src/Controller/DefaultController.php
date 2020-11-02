@@ -12,16 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-
     /**
-     * Page HomePage : première page
+     * Page Homepage : première page
      * @Route("/homepage", name="default_homepage", methods={"GET"})
      */
     public function homepage()
     {
         return $this->render('default/homepage.html.twig');
     }
-
 
     /**
      * Page : Accueil
@@ -39,11 +37,10 @@ class DefaultController extends AbstractController
         ]);
     }
 
-
+    # TODO
     /**
      * Page / Action : Contact
      */
-    # TODO
     # public function contact()
     #{return $this->render('default/contact.html.twig');}
 
