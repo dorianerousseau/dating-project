@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Inscription • AppyLove{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                {% for message in messages %}
+                    {{ message.createdAt| date('d/m/y') }} <br> {{ message.user.pseudo }} : {{ message.content }} {{ message.createdAt| date('H:i') }}<br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
