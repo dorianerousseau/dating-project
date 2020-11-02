@@ -2,7 +2,7 @@
 <nav id="header-navbar" class="navbar navbar-expand-lg py-4">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center text-white" href="{{ path('index') }}">
-           <img class="logo" src="{{ asset('assets/img/appylovelogo.png') }}" alt="Logo AppyLove"/>
+           <img class="logo" src="{{ asset('assets/img/logo_bleu.png') }}" alt="Logo AppyLove"/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header"
                 aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="nav-link" href="{{ path('/user/profil/modifier') }}">Modifier le profil</a>
+                        <a class="nav-link" href="{{ path('profil_update') }}">Modifier le profil</a>
                     {% endif %}
 
                     <a class="nav-link btn btn-primary" href="{{ path('app_logout') }}">Déconnexion</a>
