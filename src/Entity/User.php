@@ -76,6 +76,7 @@ class User implements UserInterface
      */
     private $featured_image;
 
+
     public function __construct()
     {
         $this->chats = new ArrayCollection();
