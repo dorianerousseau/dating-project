@@ -12,39 +12,41 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfileController extends AbstractController
 {
-    /**
-     * @Route("/user/profil", name="profil")
-     */
-    public function index()
-    {
-        return $this->render('profile/profile.html.twig');
-    }
-
     # ------- Pour modifier le profil -------
     /**
      * @Route("/user/modifier/profil", name="profil_update", methods={"GET"})
      */
     public function editProfile(Request $request)
     {
+        # 1. Récupération de l'utilisateur
         $user = $this->getUser();
+
+        # 2. Création du Formulaire de modification
         $form = $this->createForm(EditProfileType::class, $user);
 
+        # 3. Récupération des infos
         $form->handleRequest($request);
 
+        # 4. Si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
+
+            # 4a. on sauvegarde en BDD
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
+            # 4b. Notification Flash
             $this->addFlash('message', 'Profil mis à jour');
-            return $this->redirectToRoute('profil');
+
+            # 4c. Redirection FIXME modifier l'url vers page connexion
+            return $this->redirectToRoute('profil_update');
         }
 
+        #5. Transmission à la Vue
         return $this->render('profile/editprofile.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-
 
     # ------- Pour modifier le mot de passe -------
     /**
@@ -63,14 +65,12 @@ class ProfileController extends AbstractController
                 $em->flush();
                 $this->addFlash('message', 'Mot de passe mis à jour avec succès');
 
-                return $this->redirectToRoute('profil');
+                return $this->redirectToRoute('profil_update');
             } else {
                 $this->addFlash('error', 'Les deux mots de passe ne sont pas identiques');
             }
         }
 
-        return $this->render('profile/editpassword.html.twig');
+        return $this->render('profile/editprofile.html.twig');
     }
-
-
 }

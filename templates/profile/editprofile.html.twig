@@ -1,12 +1,97 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %} Modification du profil de {{ app.user.pseudo }} {% endblock %}
+{% block title %} Profil de {{ app.user.pseudo }} {% endblock %}
 
 {% block body %}
-    <div class="grix xs4 container">
-        <div class="col-xs4">
-            <h1>Modification du profil de {{ app.user.pseudo }}</h1>
-            {{ form(form) }}
-        </div> <!-- /.col-xs4 -->
-    </div> <!-- /.grix -->
+    <div class="light-style flex-grow-1 container-p-y">
+        <!-- afficher le message du add.flash -->
+        {% for message in app.flashes('message') %}
+            <div class="col-xs4">
+                <div class="p-3 my-2 rounded-2 success">{{ message }}</div>
+            </div>
+        {% endfor %}
+
+        <h4 class="font-weight-bold py-3 mb-4">
+            Paramètres
+        </h4>
+
+        {#{{ form{attr: {novalidate: 'novalidate'}} }}#}
+
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                           href="#account-general">Modifier le profil</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                           href="#account-change-password">Changer de mot de passe</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <!-- formulaire modification profil (coté photo) -->
+                        <div class="tab-pane fade active show" id="account-general">
+                            <div class="card-body media align-items-center">
+                                <img src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar" class="d-block ui-w-80">
+                                <div class="media-body ml-4">
+
+                                </div> <!-- /.media-body -->
+                            </div> <!-- /.tab-pane -->
+                            <hr class="border-light m-0">
+
+                            <!-- formulaire modification profil (coté infos) -->
+                            <div class="card-body">
+                                <form class="form" role="form">
+                                <div class="form-group">
+                                    <label class="form-label">Pseudo</label>
+                                    <input type="text" class="form-control mb-1" value="{{ app.user.pseudo }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Age</label>
+                                    <input type="text" class="form-control" value="{{ app.user.age }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">E-mail</label>
+                                    <input type="text" class="form-control mb-1" value="{{ app.user.email }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Bio</label>
+                                    <textarea class="form-control" rows="5"> {{ app.user.bio }} </textarea>
+                                </div>
+                                </form>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.tab-pane fade -->
+
+                        <!-- formulaire modification mdp -->
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <form class="form" role="form">
+                                <div class="form-group">
+                                    <label class="form-label">Nouveau mot de passe</label>
+                                    <input type="password" id="mdp" name="mdp" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Confirmer le nouveau mot de passe</label>
+                                    <input type="password" id="mdp2" name="mdp2" class="form-control">
+                                </div>
+                                </form>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.tab-pane fade -->
+
+                    </div> <!-- /.tab-content -->
+                </div> <!-- /.col-md-9 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.card -->
+    </div> <!-- /.container -->
+
+    <div class="text-right mt-3">
+        <a href="{{ path('user_create') }}">
+            <button type="submit" class="btn btn-primary">Modifier</button>&nbsp;
+        </a>
+
+        <a href="{{ path('profil_update') }}">
+            <button type="button" class="btn btn-default">Annuler</button>
+        </a>
+    </div>
+
 {% endblock %}
