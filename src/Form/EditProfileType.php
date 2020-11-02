@@ -15,6 +15,8 @@ class EditProfileType extends AbstractType
     {
         $builder
             ->add('pseudo', TextType::class)
+            ->add('age', TextType::class)
+            ->add('email', TextType::class)
             ->add('bio', TextType::class)
             ->add('valider', SubmitType::class)
         ;

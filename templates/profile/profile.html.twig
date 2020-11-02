@@ -1,51 +1,13 @@
-{% extends "base.html.twig" %}
+{#
+{% extends 'base.html.twig' %}
 
-{% block title %} Profil de {{ app.user.pseudo }} {% endblock %}
+{% block title %} Modification du profil de {{ app.user.pseudo }} {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <!-- afficher le message du add.flash -->
-        {% for message in app.flashes('message') %}
-            <div class="col-xs4">
-                <div class="p-3 my-2 rounded-2 success">{{ message }}</div>
-            </div>
-        {% endfor %}
-
-        <div class="d-flex align-items-start py-3"><img src="{{ app.user.featuredImage }}" class="img" alt="avatar">
-            <div class="pl-sm-4 pl-2" id="img-section"><h2> Profil de  {{ app.user.pseudo }} </h2>
-                <p>{{ app.user.age ~ app.user.city }}</p>
-            </div>
-        </div>
-        <hr>
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Pseudo :</label>
-                <div class="col-lg-8">
-                    <input class="form-control" type="text" value=" {{ app.user.pseudo }} ">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Email :</label>
-                <div class="col-lg-8">
-                    <input class="form-control" type="text" value=" {{ app.user.email }} ">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Bio :</label>
-                <div class="col-lg-8">
-                    <input class="form-control" type="textarea" value=" {{ app.user.bio }} ">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-3 control-label"></label>
-                <div class="col-md-8">
-                    <a href=" {{ path('profil_update') }} " class="btn btn-primary btn-info btn-block">Modifier le profil</a>
-                    <a href=" {{ path('profil_password_update') }} " class="btn btn-primary btn-info btn-block">Modifier le mot de
-                        passe</a>
-                </div>
-            </div>
-        </form>
-    </div>
-    <hr>
-{% endblock %}
+    <div class="grix xs4 container">
+        <div class="col-xs4">
+            <h1>Modification du profil de {{ app.user.pseudo }}</h1>
+            {{ form(form) }}
+        </div> <!-- /.col-xs4 -->
+    </div> <!-- /.grix -->
+{% endblock %}#}
