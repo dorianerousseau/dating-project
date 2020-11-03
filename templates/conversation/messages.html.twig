@@ -1,81 +1,60 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Inscription • AppyLove{% endblock %}
+{% block title %}Conversation • AppyLove{% endblock %}
 
 {% block body %}
-
+    <!-- Bootstrap Chat theme -->
     <div class="container">
-        <div class="row">
-            <div class="col-8 mx-auto">
-                {% for message in messages %}
-                    {{ message.createdAt| date('d/m/y') }} <br> {{ message.user.pseudo }} : {{ message.content }} {{ message.createdAt| date('H:i') }}<br>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+        <h3 class=" text-center">Conversation</h3>
+        <div class="messaging">
 
-{% endblock %}
+                <div class="inbox_msg">
+                    <div class="mesgs">
 
-<!-- Bootstrap Chat theme -->
-{% block body %}
-<div class="container">
-    <h3 class=" text-center">Messages</h3>
-    <div class="messaging">
-        {% for message in messages %}
-        <div class="inbox_msg">
-            <div class="inbox_people">
-                <div class="headind_srch">
-                    <div class="recent_heading">
-                        <h4>Récents</h4>
-                    </div>
-                    <div class="srch_bar">
-                        <div class="stylish-input-group">
-                            <input type="text" class="search-bar"  placeholder="Search" >
-                            <span class="input-group-addon">
-                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> </div>
-                    </div>
-                </div>
-                <div class="inbox_chat">
-                    <div class="chat_list ">
-                        <div class="chat_people">
-                            <div class="chat_img"> <img src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar" > </div>
-                            <div class="chat_ib">
-                                <h5>{{ message.user.pseudo }} <span class="chat_date">{{ message.createdAt| date('d/m/y') }}</span></h5>
-                                <p>{{ message.content }}</p>
+
+
+                        <div class="msg_history">
+                        {% for message in messages %}
+
+                            {% if app.user is same as message.user %}
+                                <div class="incoming_msg">
+                                    <div class="incoming_msg_img"><img
+                                                src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar">
+                                    </div>
+                                    <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                            <p>{{ message.content }}</p>
+                                            <span class="time_date"> {{ message.createdAt| date('H:i') }}    |    {{ message.createdAt| date('d/m') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                        <p>{{ message.content }}</p>
+                                        <span class="time_date"> {{ message.createdAt| date('H:i') }}    |    {{ message.createdAt| date('d/m') }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                        {% endfor %}
+
+                        </div>
+
+
+
+                        {# Formulaire pour envoyer un message a faire en dessous #}
+
+                        <div class="type_msg">
+                            <div class="input_msg_write">
+                                <input type="text" class="write_msg" placeholder="Type a message"/>
+                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o"
+                                                                              aria-hidden="true"></i></button>
                             </div>
                         </div>
-                    </div> <!--/.inbox_chat-->
-
-                </div>
-            </div>
-            <div class="mesgs">
-                <div class="msg_history">
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar" > </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>{{ message.content }}</p>
-                                <span class="time_date"> {{ message.createdAt| date('H:i') }}    |    {{ message.createdAt| date('d/m') }}</span></div>
-                        </div>
-                    </div>
-                    <div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>{{ message.content }}</p>
-                            <span class="time_date"> {{ message.createdAt| date('H:i') }}    |    {{ message.createdAt| date('d/m') }}</span> </div>
-                    </div>
-
-                </div>
-                <div class="type_msg">
-                    <div class="input_msg_write">
-                        <input type="text" class="write_msg" placeholder="Type a message" />
-                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        {% endfor %}
-    </div> <!-- /.messaging -->
-</div>
+        </div> <!-- /.messaging -->
+    </div>
 {% endblock %}

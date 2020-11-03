@@ -2,7 +2,7 @@
 
     <!-- Nav left -->
     <a class="navbar-brand" href="{{ path('index') }}">
-        <img class="logo" src="{{ asset('assets/img/logo_bleu.png') }}" width="80" height="70" alt="Logo AppyLove"/>
+        <img class="logo" src="{{ asset('assets/img/logo_bleu_rose.png') }}" width="80" height="70" alt="Logo AppyLove"/>
     </a>
     <!-- Nav hobbies -->
     <div class="collapse navbar-collapse" id="navbar-nav-header">
@@ -51,15 +51,15 @@
             <i class="material-icons md-light ml-2 pmd-sm"></i>
         </a>
         {% endif %}
-        <!-- si l'utilisateur est connecté -->
+        <!-- si l'utilisateur est connecté-->
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <a class="dropdown-item" href="{{ path('profil_update') }}" >Paramètres</a>
+                <a class="dropdown-item" href="{{ path('profile_update') }}" >Paramètres</a>
                 <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
             </ul>
 
-            <!-- si l'utilisateur n'est pas connecté -->
+            <!--si l'utilisateur n'est pas connecté-->
         {% else %}
             <ul class="nav navbar-nav navbar-right">
                 <li>
