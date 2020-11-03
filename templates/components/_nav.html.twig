@@ -54,7 +54,7 @@
         <!-- si l'utilisateur est connecté-->
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <a class="dropdown-item" href="{{ path('profil_update') }}" >Paramètres</a>
+                <a class="dropdown-item" href="{{ path('profile_update') }}" >Paramètres</a>
                 <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
             </ul>
 
