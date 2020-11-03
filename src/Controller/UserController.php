@@ -104,7 +104,7 @@ class UserController extends AbstractController
             $this->addFlash('notice', 'Merci pour votre inscription !');
 
             # 4f. Redirection FIXME modifier l'url vers page connexion
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
 
         }
 
