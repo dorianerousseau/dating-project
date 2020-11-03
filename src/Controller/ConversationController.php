@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Chat;
 use App\Entity\Message;
 use App\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -40,6 +41,7 @@ class ConversationController extends AbstractController
     /**
      * Conversation en privé
      * TODO : Vérifier que veux quia ccede au chat sont bien les users du chat
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @Route("/conversations/{id}", name="conversations_get", methods={"GET|POST"})
      *
      */
@@ -50,7 +52,6 @@ class ConversationController extends AbstractController
 
         $message = new Message();
         $message->setUser($this->getUser());
-        # TODO : Formulaire pour créer un message
 
 
         #1. Ajout de la date du message
@@ -67,7 +68,6 @@ class ConversationController extends AbstractController
         #3. Demande à symfony de récupérer les infos dans la request
         $form->handleRequest($request);
 
-        # TODO : Traitement du formulaire pour ajouter un message
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -77,7 +77,8 @@ class ConversationController extends AbstractController
         } #endif
 
         return $this->render('conversation/messages.html.twig', [
-            'messages'=>$messages
+            'messages'=>$messages,
+            'chat' => $chat
         ]);
     }
 

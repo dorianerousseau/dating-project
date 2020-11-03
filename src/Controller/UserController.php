@@ -56,7 +56,8 @@ class UserController extends AbstractController
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('featuredImage', FileType::class)
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class,[
+                "label"=>"Valider"])
             ->getForm();
 
         # 3. Récupération des infos
@@ -103,8 +104,8 @@ class UserController extends AbstractController
             # 4e. Notification Flash
             $this->addFlash('notice', 'Merci pour votre inscription !');
 
-            # 4f. Redirection FIXME modifier l'url vers page connexion
-            return $this->redirectToRoute('index');
+            # 4f. Redirection vers page connexion
+            return $this->redirectToRoute('app_login');
 
         }
 

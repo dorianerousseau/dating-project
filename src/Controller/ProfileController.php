@@ -12,16 +12,16 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfileController extends AbstractController
 {
-    # ------- Pour modifier le profil -------
+        # ------- Pour modifier le profil -------
     /**
-     * @Route("/user/modifier/profil", name="profil_update", methods={"GET"})
+     * @Route("accounts/edit", name="profile_update", methods={"GET|POST"})
      */
     public function editProfile(Request $request)
     {
         # 1. Récupération de l'utilisateur
         $user = $this->getUser();
 
-        # 2. Création du Formulaire de modification
+        # 2. Création du Formulaire de modification selon la class du directory Form
         $form = $this->createForm(EditProfileType::class, $user);
 
         # 3. Récupération des infos
@@ -36,21 +36,23 @@ class ProfileController extends AbstractController
             $em->flush();
 
             # 4b. Notification Flash
-            $this->addFlash('message', 'Profil mis à jour');
+            $this->addFlash('notice', 'Votre profil est mis à jour');
 
-            # 4c. Redirection FIXME modifier l'url vers page connexion
-            return $this->redirectToRoute('profil_update');
+            # 4c. Redirection
+            return $this->redirectToRoute('profile_update');
         }
 
         #5. Transmission à la Vue
         return $this->render('profile/editprofile.html.twig', [
             'form' => $form->createView(),
         ]);
+
     }
 
-    # ------- Pour modifier le mot de passe -------
+
+         # ------- Pour modifier le mot de passe -------
     /**
-     * @Route("/user/profil/password/modifier", name="profil_password_update")
+     * @Route("accounts/password/edit", name="profil_password_update")
      */
     public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -63,9 +65,9 @@ class ProfileController extends AbstractController
             if ($request->request->get('mdp') == $request->request->get('mdp2')) {
                 $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('mdp')));
                 $em->flush();
-                $this->addFlash('message', 'Mot de passe mis à jour avec succès');
+                $this->addFlash('notice', 'votre mot de passe a été mis à jour');
 
-                return $this->redirectToRoute('profil_update');
+                return $this->redirectToRoute('profile_update');
             } else {
                 $this->addFlash('error', 'Les deux mots de passe ne sont pas identiques');
             }
@@ -73,4 +75,7 @@ class ProfileController extends AbstractController
 
         return $this->render('profile/editprofile.html.twig');
     }
+
+
+
 }
