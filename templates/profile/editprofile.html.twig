@@ -3,19 +3,16 @@
 {% block title %} Profil de {{ app.user.pseudo }} {% endblock %}
 
 {% block body %}
+
     <div class="light-style flex-grow-1 container-p-y">
-        <!-- afficher le message du add.flash -->
-        {% for message in app.flashes('message') %}
-            <div class="col-xs4">
-                <div class="p-3 my-2 rounded-2 success">{{ message }}</div>
-            </div>
+        <!-- afficher le message -->
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
 
         <h4 class="font-weight-bold py-3 mb-4">
             Paramètres
         </h4>
-
-        {#{{ form{attr: {novalidate: 'novalidate'}} }}#}
 
         <div class="card overflow-hidden">
             <div class="row no-gutters row-bordered row-border-light">
@@ -33,39 +30,20 @@
                         <div class="tab-pane fade active show" id="account-general">
                             <div class="card-body media align-items-center">
                                 <img src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar" class="d-block ui-w-80">
-                                <div class="media-body ml-4">
-
-                                </div> <!-- /.media-body -->
-                            </div> <!-- /.tab-pane -->
+                                <div class="media-body ml-4"> </div>
+                            </div>
                             <hr class="border-light m-0">
 
                             <!-- formulaire modification profil (coté infos) -->
                             <div class="card-body">
-                                <form class="form" role="form">
-                                <div class="form-group">
-                                    <label class="form-label">Pseudo</label>
-                                    <input type="text" class="form-control mb-1" value="{{ app.user.pseudo }}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Age</label>
-                                    <input type="text" class="form-control" value="{{ app.user.age }}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">E-mail</label>
-                                    <input type="text" class="form-control mb-1" value="{{ app.user.email }}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Bio</label>
-                                    <textarea class="form-control" rows="5"> {{ app.user.bio }} </textarea>
-                                </div>
-                                </form>
-                            </div> <!-- /.card-body -->
-                        </div> <!-- /.tab-pane fade -->
+                                    {{ form(form) }}
+                            </div>
+                        </div> <!-- /.tab-pane -->
 
                         <!-- formulaire modification mdp -->
                         <div class="tab-pane fade" id="account-change-password">
                             <div class="card-body pb-2">
-                                <form class="form" role="form">
+                                <form action="{{ path('profil_password_update') }}" method="post" class="form" role="form">
                                 <div class="form-group">
                                     <label class="form-label">Nouveau mot de passe</label>
                                     <input type="password" id="mdp" name="mdp" class="form-control">
@@ -74,24 +52,14 @@
                                     <label class="form-label">Confirmer le nouveau mot de passe</label>
                                     <input type="password" id="mdp2" name="mdp2" class="form-control">
                                 </div>
+                                <button type="submit" class="btn btn-primary">Valider</button>
                                 </form>
                             </div> <!-- /.card-body -->
-                        </div> <!-- /.tab-pane fade -->
+                        </div> <!-- /.tab-pane -->
 
                     </div> <!-- /.tab-content -->
                 </div> <!-- /.col-md-9 -->
             </div> <!-- /.row -->
         </div> <!-- /.card -->
-    </div> <!-- /.container -->
-
-    <div class="text-right mt-3">
-        <a href="{{ path('user_create') }}">
-            <button type="submit" class="btn btn-primary">Modifier</button>&nbsp;
-        </a>
-
-        <a href="{{ path('profil_update') }}">
-            <button type="button" class="btn btn-default">Annuler</button>
-        </a>
-    </div>
-
+    </div> <!-- /.light-style -->
 {% endblock %}
