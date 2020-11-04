@@ -1,36 +1,32 @@
 {% extends "base.html.twig" %}
 
-{% block title %}AppyLove{% endblock %}
+ {% block body %}
 
-{% block body %}
-    <!-- page d'accueil #01 (pas connecté) -->
-    <div class="jumbotron d-flex align-items-center">
-        <div class="container text-center">
-            <!--<h1 class="display-1 mb-4">LO<br>VE</h1>-->
-            <h1>APPY<br>LOVE</h1>
-            <br>
-            <br>
-            <button type="submit" href="{{ path('user_create') }}" class="btn btn-light">Inscription</button>
-            <button type="button" href="{{ path('app_login') }}" class="btn btn-primary">Connexion</button>
-        </div>
-        <div class="rectangle-1"></div>
-        <div class="rectangle-2"></div>
-        <div class="rectangle-transparent-1"></div>
-        <div class="rectangle-transparent-2"></div>
-        <div class="circle-1"></div>
-        <div class="circle-2"></div>
-        <div class="circle-3"></div>
-        <div class="triangle triangle-1">
-            <img src="{{ asset('assets/img/obj_triangle.png') }}" alt="">
-        </div>
-        <div class="triangle triangle-2">
-            <img src="{{ asset('assets/img/obj_triangle.png') }}" alt="">
-        </div>
-        <div class="triangle triangle-3">
-            <img src="{{ asset('assets/img/obj_triangle.png') }}" alt="">
-        </div>
-        <div class="triangle triangle-4">
-            <img src="{{ asset('assets/img/obj_triangle.png') }}" alt="">
-        </div>
-    </div>
-{% endblock %}
+     <div class="p-3 mx-auto text-center">
+         <h1 class="display-4">AppyLove</h1>
+     </div>
+
+     <div class="py-5 bg-light">
+         <div class="container">
+             <div class="row">
+                 {% for  user in users %}
+                     <div class="col-md-4 mt-4">
+                         <div class="card shadow-sm">
+                             <img src="{{ asset('uploads/images/'~ user.featuredImage) }}"
+                                  alt="{{ user.pseudo }}" class="card-img-top" width="200" height="200">
+                             <div class="card-body">
+                                 <h5 class="card-title">{{ user.pseudo ~ '⎪' ~ user.age ~ ' ans' ~ '⎪' ~ user.city }}</h5>
+                                 <hr>
+                                 <p class="card-text">{{ user.bio }}</p>
+                                 <a href="{{ path('default_user', {
+                                     'id' : user.id
+                                 }) }}" class="btn btn-outline-primary"> <i class="far fa-comments"></i> Message en privé </a>
+                             </div> <!-- /.card-body -->
+                         </div> <!-- /.card -->
+                     </div> <!-- /.col-md-4 -->
+                 {% endfor %}
+
+             </div> <!-- /.row -->
+         </div> <!-- /.container -->
+     </div> <!-- /.py-5 -->
+ {% endblock %}

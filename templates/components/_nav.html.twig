@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-transparent pmd-navbar pmd-z-depth ">
-
     <!-- Nav left -->
-    <a class="navbar-brand" href="{{ path('index') }}">
-        <img class="logo" src="{{ asset('assets/img/logo_bleu_rose.png') }}" width="80" height="70" alt="Logo AppyLove"/>
+    <a class="navbar-brand" href="{{ path('default_homepage') }}">
+        <img class="logo" src="{{ asset('assets/img/logo_bleu_rose.png') }}" width="80" height="80" alt="Logo AppyLove"/>
     </a>
     <!-- Nav hobbies -->
     <div class="collapse navbar-collapse" id="navbar-nav-header">
@@ -42,24 +41,22 @@
 
 
     <!-- Nav menu with user information -->
-
     <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+        <!-- si l'utilisateur est connecté -->
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="javascript:void(0);" class="btn-user dropdown-header media align-items-center" data-toggle="dropdown"
-           data-sidebar="true" aria-expanded="false">
-          <img class="mr-2" src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" width="40" height="40" alt="avatar">
-            <i class="material-icons md-light ml-2 pmd-sm"></i>
-        </a>
-        {% endif %}
-        <!-- si l'utilisateur est connecté-->
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="javascript:void(0);" class="btn-user dropdown-header media align-items-center"
+               data-toggle="dropdown"
+               data-sidebar="true" aria-expanded="false">
+                <img class="mr-2" src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" width="40" height="40"
+                     alt="avatar">
+                <i class="material-icons md-light ml-2 pmd-sm"></i>
+            </a>
 
             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <a class="dropdown-item" href="{{ path('profile_update') }}" >Paramètres</a>
+                <a class="dropdown-item" href="{{ path('profile_update') }}">Paramètres</a>
                 <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
             </ul>
-
-            <!--si l'utilisateur n'est pas connecté-->
+        <!-- si l'utilisateur n'est pas connecté -->
         {% else %}
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -70,7 +67,7 @@
 
                 <li>
                     <a href="{{ path('app_login') }}">
-                    <button class="btn btn-info my-2 my-sm-0">Connexion</button>
+                        <button class="btn btn-info my-2 my-sm-0">Connexion</button>
                     </a>
                 </li>
             </ul>
