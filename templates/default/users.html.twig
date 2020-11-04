@@ -7,7 +7,7 @@
                 <div class="jumbotron mt-4">
                     <h1 class="display-4">{{ user.pseudo }}</h1>
                     <img src="{{ asset('uploads/images/'~ user.featuredImage ) }}"
-                         alt="{{ user.pseudo }}" class="card-img-top">
+                         alt="{{ user.pseudo }}" class="card-img-top" width="80" height="80">
                     {{ user.bio | raw }}
                 </div>
             </div>

@@ -24,12 +24,16 @@
         <main class="container-fluid">
             <div class="row">
                 <div class="col">
-                    {% include 'components/_nav.html.twig' %}
+                    {% if is_granted('ROLE_USER') %}
+                        {% include 'components/_nav.html.twig' %}
+                    {% endif %}
+
                     {% for message in app.flashes('notice') %}
                         <div class="alert alert-info">
                             {{ message }}
                         </div>
                     {% endfor %}
+
                     {% block body %}{% endblock %}
                 </div>
             </div>

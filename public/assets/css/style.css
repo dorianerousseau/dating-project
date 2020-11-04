@@ -868,5 +868,9 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 }
 /* ---- FIN PAGE MODIFIER LE PROFIL ---- */
 
-
+/* ---- PAGE INDEX ---- */
+.card-img-top{
+    height: 200px !important;
+    width: 150px !important;
+}
 
