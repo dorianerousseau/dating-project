@@ -6,6 +6,7 @@ use App\Entity\Chat;
 use App\Entity\Message;
 use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -35,13 +36,13 @@ class ConversationController extends AbstractController
 
         return $this->redirectToRoute('conversations_get', [
            'id' => $chat->getId()
+
         ]);
     }
 
     /**
      * Conversation en privé
-     * TODO : Vérifier que veux quia ccede au chat sont bien les users du chat
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * @Security("chat.checkForUser(user)")
      * @Route("/conversations/{id}", name="conversations_get", methods={"GET|POST"})
      *
      */
@@ -77,7 +78,8 @@ class ConversationController extends AbstractController
 
         return $this->render('conversation/messages.html.twig', [
             'messages'=>$messages,
-            'chat' => $chat
+            'chat' => $chat,
+            'form' => $form->createView()
         ]);
     }
 

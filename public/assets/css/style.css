@@ -890,7 +890,7 @@ img{ max-width:100%;}
 .srch_bar {
     display: inline-block;
     text-align: right;
-    /*width: 60%; padding: 0;*/
+    width: 60%; padding: 0;
 }
 .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
 
@@ -957,8 +957,9 @@ img{ max-width:100%;}
     font-size: 12px;
     margin: 8px 0 0;
 }
-.received_withd_msg { width: 57%;}
+.received_withd_msg { width: 60%;}
 .mesgs {
+    width: 100%;
     float: left;
     padding: 30px 15px 0 25px;
 }
