@@ -54,6 +54,11 @@ class UserController extends AbstractController
                 }
             ])# liste déroulante (h /f)
 
+            ->add('hobbies', EntityType::class, [
+                'class' => Hobbies::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+            ])
             ->add('city', TextType::class)
 
             ->add('hobbies', EntityType::class, [

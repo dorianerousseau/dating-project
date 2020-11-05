@@ -13,7 +13,7 @@
                      <div class="col-md-4 mt-4">
                          <div class="card shadow-sm">
                              <img src="{{ asset('uploads/images/'~ user.featuredImage) }}"
-                                  alt="{{ user.pseudo }}" class="card-img-top" width="200" height="200">
+                                  alt="{{ user.pseudo }}" class="card-img-top" style="object-fit: cover; object-position: top;" width="230" height="300">
                              <div class="card-body">
                                  <h5 class="card-title">{{ user.pseudo ~ '⎪' ~ user.age ~ ' ans' ~ '⎪' ~ user.city }}</h5>
                                  <hr>

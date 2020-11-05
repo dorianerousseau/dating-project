@@ -15,10 +15,14 @@ class DefaultController extends AbstractController
 {
     /**
      * Page Index : quand on arrive sur le site
-     * 
+     *
      */
     public function index()
     {
+        #retourne l'
+        if($this->getUser()){
+            return $this->redirectToRoute('default_homepage');
+        }
         return $this->render('default/index.html.twig');
     }
 
