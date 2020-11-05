@@ -57,7 +57,6 @@ class ConversationController extends AbstractController
         #1. Ajout de la date du message
         $message->setCreatedAt(new \DateTime());
 
-
         # 2. Création du Formulaire pour créer un message
         $form = $this->createFormBuilder($message)
             ->add('content', TextareaType::class)

@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Hobbies;
 use App\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,26 +14,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * Page Homepage : première page
-     * @Route("/homepage", name="default_homepage", methods={"GET"})
-     */
-    public function homepage()
-    {
-        return $this->render('default/homepage.html.twig');
-    }
-
-    /**
-     * Page : Accueil
+     * Page Index : quand on arrive sur le site
+     *
      */
     public function index()
     {
-        # Récupérer les 10 derniers profils de la BDD par ordre décroissant
+        #retourne l'
+        if($this->getUser()){
+            return $this->redirectToRoute('default_homepage');
+        }
+        return $this->render('default/index.html.twig');
+    }
 
+    /**
+     * Page : Homepage (quand on est connecté)
+     * @Route("/homepage", name="default_homepage", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function homepage()
+    {
+        # Récupére les 10 derniers profils de la BDD par ordre décroissant
         $users = $this->getDoctrine()
         ->getRepository(User::class)
         ->findBy([], ['id'=>'DESC'], 10);
 
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/homepage.html.twig', [
             'users' => $users
         ]);
     }

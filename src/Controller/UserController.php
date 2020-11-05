@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Hobbies;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -52,6 +54,11 @@ class UserController extends AbstractController
                 }
             ])# liste déroulante (h /f)
 
+            ->add('hobbies', EntityType::class, [
+                'class' => Hobbies::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+            ])
             ->add('city', TextType::class)
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
