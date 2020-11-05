@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Hobbies;
 use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,7 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        #retourne l'
+
         if($this->getUser()){
             return $this->redirectToRoute('default_homepage');
         }
@@ -29,7 +30,7 @@ class DefaultController extends AbstractController
     /**
      * Page : Homepage (quand on est connecté)
      * @Route("/homepage", name="default_homepage", methods={"GET"})
-     * @IsGranted("ROLE_USER")
+     * @Security("ROLE_USER")
      */
     public function homepage()
     {
