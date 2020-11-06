@@ -27,14 +27,14 @@ class DefaultController extends AbstractController
     /**
      * Page : Homepage (quand on est connecté)
      * @Route("/homepage", name="default_homepage", methods={"GET"})
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function homepage()
     {
         # Récupére les 10 derniers profils de la BDD par ordre décroissant
         $users = $this->getDoctrine()
         ->getRepository(User::class)
-        ->findBy([], ['id'=>'DESC'], 10);
+        ->findProfils($this->getUser()->getId());
 
         return $this->render('default/homepage.html.twig', [
             'users' => $users
@@ -85,6 +85,17 @@ class DefaultController extends AbstractController
 
         return $this->render('default/users.html.twig', [
             'user'=>$user
+        ]);
+    }
+
+    /**
+     * @Route("/chat/mes-conversations", name="default_mesconvs");
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function mesConversations()
+    {
+        return $this->render('conversation/chats.html.twig', [
+            'chats' => $this->getUser()->getChats()
         ]);
     }
 

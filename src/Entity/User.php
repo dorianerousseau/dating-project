@@ -55,12 +55,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=3)
+     * @Assert\NotBlank(message="N'oubliez pas votre age.")
      * @Assert\GreaterThanOrEqual(
      *     value = 18, message="Vous devez avoir plus de 18 ans pour vous inscrire sur AppyLove.")
      */
     private $age;
 
     /**
+     * @Assert\NotBlank(message="N'oubliez pas votre ville.")
      * @ORM\Column(type="string", length=80)
      */
     private $city;
@@ -76,15 +78,13 @@ class User implements UserInterface
     private $chats;
 
     /**
+     * @Assert\NotBlank(message="N'oubliez pas votre ou vos hobbies.")
      * @ORM\ManyToMany(targetEntity=Hobbies::class, inversedBy="users")
      */
     private $hobbies;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Image(
-     *     mimeTypesMessage="Veuillez vérifier le format de l'image pour illustrer votre article",
-     * )
      */
     private $featured_image;
 
@@ -144,12 +144,12 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword()
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword($password): self
     {
         $this->password = $password;
 

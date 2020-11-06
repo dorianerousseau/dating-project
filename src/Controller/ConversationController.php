@@ -52,16 +52,18 @@ class ConversationController extends AbstractController
         $messages = $chat->getMessages();
 
         $message = new Message();
+        $message->setChat($chat);
         $message->setUser($this->getUser());
-
-
-        #1. Ajout de la date du message
         $message->setCreatedAt(new \DateTime());
 
         # 2. Création du Formulaire pour créer un message
         $form = $this->createFormBuilder($message)
-            ->add('content', TextareaType::class)
-            ->add('submit', SubmitType::class)
+            ->add('content', TextareaType::class, [
+                'label' => 'Message'
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer le message'
+            ])
             ->getForm();
 
 
@@ -74,6 +76,11 @@ class ConversationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
+
+            return $this->redirectToRoute('conversations_get', [
+                'id' => $chat->getId()
+            ]);
+
         } #endif
 
         return $this->render('conversation/messages.html.twig', [
