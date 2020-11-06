@@ -40,8 +40,8 @@ class UserController extends AbstractController
 
         # 2. Création du Formulaire d'inscription
         $form = $this->createFormBuilder($user)
-            ->add('pseudo', TextType::class,["label"=>"Pseudo"])
-            ->add('age', TextType::class,["label"=>"Age"])
+            ->add('pseudo', TextType::class)
+            ->add('age', TextType::class)
             ->add('sex', ChoiceType::class, [
                 'choices' => [
                     'Choisissez' => true,
@@ -64,16 +64,15 @@ class UserController extends AbstractController
                 'multiple' => true,
                 'choice_label' => 'name',
             ])
-            ->add('city', TextType::class)
+            ->add('city', TextType::class,["label"=>"Ville"])
             ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
+            ->add('password', PasswordType::class,["label"=>"Mot de passe"])
             ->add('featuredImage', FileType::class, [
                 'attr' => [
                     'class' => 'dropify'
                 ]
             ])
-            ->add('submit', SubmitType::class,[
-                "label"=>"Valider"])
+            ->add('submit', SubmitType::class,["label"=>"Valider"])
             ->getForm();
 
         # 3. Récupération des infos

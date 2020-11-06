@@ -41,13 +41,6 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    # TODO
-    /**
-     * Page / Action : Contact
-     */
-    # public function contact()
-    #{return $this->render('default/contact.html.twig');}
-
     /**
      * Page / Action : Hobbies
      * Permet d'afficher les hobbies des utilisateurs
