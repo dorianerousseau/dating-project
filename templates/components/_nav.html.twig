@@ -1,10 +1,16 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-transparent pmd-navbar pmd-z-depth">
     <div class="container">
+<<<<<<< Updated upstream
 
         <!-- Nav left -->
         <a class="navbar-brand d-flex align-items-center" href="{{ path('default_homepage') }}">
             <img class="logo" src="{{ asset('assets/img/logo_bleu_rose.png') }}" width="100" height="100"
                  alt="Logo AppyLove"/>
+=======
+        <a class="navbar-brand d-flex align-items-center text-white" href="{{ path('index') }}">
+            <img class="logo" src="{{ asset('assets/img/appylovelogo.png') }}" width="80" height="70" alt="Logo AppyLove"/>
+
+>>>>>>> Stashed changes
         </a>
 
         <!-- Nav Burger -->
@@ -53,6 +59,7 @@
             <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
                 <!-- si l'utilisateur est connecté -->
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<<<<<<< Updated upstream
                     <a href="javascript:void(0);" class="btn-user dropdown-header media align-items-center"
                        data-toggle="dropdown"
                        data-sidebar="true" aria-expanded="false">
@@ -60,6 +67,11 @@
                              height="50"
                              style="object-fit: cover; object-position: top;" alt="avatar">
                     </a>
+=======
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="nav-link" href="{{ path('profil_update') }}">Modifier le profil</a>
+                    {% endif %}
+>>>>>>> Stashed changes
 
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                         <a class="dropdown-item" href="{{ path('profile_update') }}">Paramètres</a>
