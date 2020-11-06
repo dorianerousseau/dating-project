@@ -32,7 +32,6 @@ class ProfileController extends AbstractController
 
             # 4a. on sauvegarde en BDD
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
             $em->flush();
 
             # 4b. Notification Flash

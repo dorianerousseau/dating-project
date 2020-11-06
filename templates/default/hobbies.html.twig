@@ -4,7 +4,7 @@
 
     <!-- .py-5.bg-light>.container>.row>.col-md-4.mt-4 -->
     <div class="p-3 mx-auto text-center">
-        <h1 class="display-4">{{ app.request.get('alias') }}</h1>
+        <h1 class="display-4">{{ app.request.get('alias') | title }}</h1>
     </div>
 
     <!-- .py-5.bg-light>.container>.row>.col-md-4.mt-4 -->
@@ -17,12 +17,10 @@
                             <img src="{{ asset('uploads/images/'~ user.featuredImage) }}"
                                  alt="{{ user.pseudo }}" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">{{ user.pseudo }}</h5>
-                                <a href="{{ path('default_user', {
-                                    'hobbies' : user.hobbies.alias,
-                                    'alias': user.alias,
+                                <h5 class="card-title">{{ user.pseudo | title }}</h5>
+                                <a href="{{ path('conversation_create', {
                                     'id' : user.id
-                                }) }}" class="btn btn-primary">Voir le profil</a>
+                                }) }}" class="btn btn-outline-primary"> <i class="far fa-comments"></i> Message en privé </a>
                             </div> <!-- /.card-body -->
                         </div> <!-- /.card -->
                     </div> <!-- /.col-md-4 -->
