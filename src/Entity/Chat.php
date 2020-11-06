@@ -130,4 +130,13 @@ class Chat
 
         return $this;
     }
+
+    /**
+     * Vérifie si le user passé en paramètre correspond
+     * a l'iun des user de la conversation
+     */
+    public function checkForUser(User $user)
+    {
+        return $this->users->contains($user);
+    }
 }

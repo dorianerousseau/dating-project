@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Hobbies;
 use App\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -25,18 +26,22 @@ class UserController extends AbstractController
     /**
      * Formulaire d'inscription d'un User
      * @Route("/membre/inscription", name="user_create", methods={"GET|POST"})
-     *
      */
     public function create_user(Request $request, UserPasswordEncoderInterface $encoder, SluggerInterface $slugger)
     {
+
+        if($this->getUser()){
+            return $this->redirectToRoute('default_homepage');
+        }
+
         # 1. Création d'un nouvel utilisateur
         $user = new User();
         $user->setRoles(['ROLE_USER']);
 
         # 2. Création du Formulaire d'inscription
         $form = $this->createFormBuilder($user)
-            ->add('pseudo', TextType::class)
-            ->add('age', TextType::class)
+            ->add('pseudo', TextType::class,["label"=>"Pseudo"])
+            ->add('age', TextType::class,["label"=>"Age"])
             ->add('sex', ChoiceType::class, [
                 'choices' => [
                     'Choisissez' => true,
@@ -102,6 +107,11 @@ class UserController extends AbstractController
                 # on stock dans la BDD
                 $user->setFeaturedImage($newFilename);
             }
+
+
+
+
+
 
             # 4d. on sauvegarde en BDD
             $em = $this->getDoctrine()->getManager();
