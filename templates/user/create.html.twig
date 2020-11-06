@@ -1,14 +1,33 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Inscription • AppyLove{% endblock %}
+
 {% block body %}
 
     <div class="container">
         <div class="row">
             <div class="col-8 mx-auto">
+
+                <img class="img-fluid mx-auto d-block mb-5"
+                     src="{{ asset('assets/img/logo_bleu_rose.png') }}"
+                     alt="Logo AppyLove">
+
                 <h3 class="my-4 text-center">Inscription</h3>
                 {{ form(form, {attr: {novalidate: 'novalidate'}}) }}
+{#                <label class="checkbox-white" for="cgu">#}
+{#                    <input id="cgu" name="cgu" type="checkbox" value="1" />#}
+{#                    <span class="checkbox-text">#}
+{#					Je certifie être majeur(e) et j'accepte les <a class='pop-cgvu'>conditions générales d'utilisation</a>. J'accepte qu'AppyLove collecte et traite mes données sensibles dans le cadre de ses services.				</span>#}
+{#                </label>#}
             </div>
         </div>
+
+        <p class="small text-center">Vous avez un compte ?
+            <a href="{{ path('app_login') }}">Connectez-vous</a>
+        </p>
+
     </div>
+
+
 
 {% endblock %}

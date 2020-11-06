@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -22,6 +23,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Length(max="180", maxMessage="Attention, pas plus de 180 caractères.")
+     * @Assert\Email(message="Vérifiez le format de votre email.")
+     * @Assert\NotBlank(message="N'oubliez pas votre email.")
      */
     private $email;
 
@@ -33,11 +37,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="N'oubliez pas votre mot de passe.")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\Length(max="80", maxMessage="Attention, pas plus de 80 caractères.")
+     * @Assert\NotBlank(message="N'oubliez pas votre pseudo.")
      */
     private $pseudo;
 
@@ -48,6 +55,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=3)
+     * @Assert\GreaterThanOrEqual(
+     *     value = 18, message="Vous devez avoir plus de 18 ans pour vous inscrire sur AppyLove.")
      */
     private $age;
 
@@ -70,6 +79,15 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity=Hobbies::class, inversedBy="users")
      */
     private $hobbies;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Image(
+     *     mimeTypesMessage="Veuillez vérifier le format de l'image pour illustrer votre article",
+     * )
+     */
+    private $featured_image;
+
 
     public function __construct()
     {
@@ -259,6 +277,18 @@ class User implements UserInterface
     public function removeHobby(Hobbies $hobby): self
     {
         $this->hobbies->removeElement($hobby);
+
+        return $this;
+    }
+
+    public function getFeaturedImage(): ?string
+    {
+        return $this->featured_image;
+    }
+
+    public function setFeaturedImage(string $featured_image): self
+    {
+        $this->featured_image = $featured_image;
 
         return $this;
     }

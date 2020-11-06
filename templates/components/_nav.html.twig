@@ -1,62 +1,87 @@
-<!-- nav -->
-<body data-spy="scroll" data-target="#navbar" class="static-layout">
-<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
+<nav class="navbar navbar-expand-xl navbar-light bg-transparent pmd-navbar pmd-z-depth">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center text-white" href="/">
-            <img class="logo" src="{{ asset('public/assets/appylovelogo.png') }}" alt="Logo AppyLove"/>
+
+        <!-- Nav left -->
+        <a class="navbar-brand d-flex align-items-center" href="{{ path('default_homepage') }}">
+            <img class="logo" src="{{ asset('assets/img/logo_bleu_rose.png') }}" width="100" height="100"
+                 alt="Logo AppyLove"/>
         </a>
+
+        <!-- Nav Burger -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header"
                 aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation">
             <span class="lnr lnr-menu"></span>
+            <i class="fas fa-bars"></i>
         </button>
+
+        <!-- Nav hobbies -->
         <div class="collapse navbar-collapse" id="navbar-nav-header">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'musique' }) }}">Musique</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'musique' }) }}"><i
+                                class="fas fa-music"></i> Musique</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'sport' }) }}">Sport</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'sport' }) }}">Sport <i class="fas fa-dumbbell"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'art' }) }}">Art</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'art' }) }}">Art <i class="fas fa-palette"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'tech-it' }) }}">Tech IT</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'tech' }) }}"> Tech <i
+                                class="fas fa-chalkboard-teacher"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_category', { 'alias' : 'voyage' }) }}">Voyage</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'voyage' }) }}">Voyage <i
+                                class="fas fa-plane-departure"></i> </a>
                 </li>
-                <li class="nav-item">
-                    <a id="side-search-open" class="nav-link" href="#">
-                        <span class="lnr lnr-magnifier"></span>
-                    </a>
-                </li>
+
                 <li class="nav-item only-desktop">
                     <a class="nav-link" id="side-nav-open" href="#">
                         <span class="lnr lnr-menu"></span>
                     </a>
                 </li>
             </ul>
+
+
+            <!-- Nav menu with user information -->
+            <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+                <!-- si l'utilisateur est connecté -->
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="javascript:void(0);" class="btn-user dropdown-header media align-items-center"
+                       data-toggle="dropdown"
+                       data-sidebar="true" aria-expanded="false">
+                        <img class="mr-2" src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" width="50"
+                             height="50"
+                             style="object-fit: cover; object-position: top;" alt="avatar">
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <a class="dropdown-item" href="{{ path('profile_update') }}">Paramètres</a>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </ul>
+                    <!-- si l'utilisateur n'est pas connecté -->
+                {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{{ path('user_create') }}">
+                                <button class="btn btn-light my-2 my-sm-0">Inscription</button>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('app_login') }}">
+                                <button class="btn btn-info my-2 my-sm-0">Connexion</button>
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
         </div>
     </div>
 </nav>
-
-<!-- nav burger (connecté = page profil, pas connecté = button inscription & connection) -->
-<div id="side-nav" class="sidenav">
-    <a href="javascript:void(0)" id="side-nav-close">&times;</a>
-
-    <div class="sidenav-content">
-        <p>
-            Kuncen WB1, Wirobrajan 10010, DIY
-        </p>
-        <p>
-            <span class="fs-16 primary-color">(+68) 120034509</span>
-        </p>
-        <p>info@yourdomain.com</p>
-    </div>
-</div>

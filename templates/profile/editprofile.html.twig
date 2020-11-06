@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Profil de {{ app.user.pseudo }} {% endblock %}
+
+{% block body %}
+
+    <div class="light-style flex-grow-1 container-p-y">
+        <!-- afficher le message -->
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        <h4 class="font-weight-bold py-3 mb-4">
+            Paramètres
+        </h4>
+
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                           href="#account-general">Modifier le profil</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                           href="#account-change-password">Changer de mot de passe</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <!-- formulaire modification profil (coté photo) -->
+                        <div class="tab-pane fade active show" id="account-general">
+                            <div class="card-body media align-items-center">
+                                <img src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar" class="d-block ui-w-80">
+                                <div class="media-body ml-4"> </div>
+                            </div>
+                            <hr class="border-light m-0">
+
+                            <!-- formulaire modification profil (coté infos) -->
+                            <div class="card-body">
+                                    {{ form(form) }}
+                            </div>
+                        </div> <!-- /.tab-pane -->
+
+                        <!-- formulaire modification mdp -->
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <form action="{{ path('profil_password_update') }}" method="post" class="form" role="form">
+                                <div class="form-group">
+                                    <label class="form-label">Nouveau mot de passe</label>
+                                    <input type="password" id="mdp" name="mdp" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Confirmer le nouveau mot de passe</label>
+                                    <input type="password" id="mdp2" name="mdp2" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                                </form>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.tab-pane -->
+
+                    </div> <!-- /.tab-content -->
+                </div> <!-- /.col-md-9 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.card -->
+    </div> <!-- /.light-style -->
+{% endblock %}

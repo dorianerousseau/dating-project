@@ -1,0 +1,49 @@
+{#
+{%  extends "base.html.twig" %}
+
+{% block body %}
+    <!-- Bootstrap Chat theme -->
+    <div class="container">
+        <h3 class=" text-center">Conversation</h3>
+        <div class="messaging">
+
+            <div class="inbox_msg">
+                <div class="mesgs">
+
+
+
+                    <div class="msg_history">
+                        {% for message in messages %}
+
+                            {% if app.user is same as message.user %}
+                                <div class="incoming_msg">
+                                    <div class="incoming_msg_img"><img
+                                                src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}" alt="avatar">
+                                    </div>
+                                    <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                            <p>{{ message.content }}</p>
+                                            <span class="time_date"> {{ message.createdAt| date('H:i') }}    |    {{ message.createdAt| date('d/m') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                        <p>{{ message.content }}</p>
+                                        <span class="time_date"> {{ message.createdAt| date('H:i') }}    |    {{ message.createdAt| date('d/m') }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                        {% endfor %}
+
+                    </div>
+
+
+
+                    {# Formulaire pour envoyer un message a faire en dessous #}
+
+
+{#{% endblock %}#}
