@@ -75,7 +75,11 @@ class UserController extends AbstractController
 
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
-            ->add('featuredImage', FileType::class )
+            ->add('featuredImage', FileType::class, [
+                'attr' => [
+                    'class' => 'dropify'
+                ]
+            ])
             ->add('submit', SubmitType::class,[
                 "label"=>"Valider"])
             ->getForm();

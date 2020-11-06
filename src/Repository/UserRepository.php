@@ -17,6 +17,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+
+    const MAX_USER = 10;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
@@ -34,6 +37,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newEncodedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
+    }
+
+    public function findProfils($idUser)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id != :user_id')
+            ->setParameter('user_id', $idUser)
+            ->orderBy('u.id', 'DESC')
+            ->setMaxResults(self::MAX_USER)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

@@ -135,8 +135,8 @@ class Chat
      * Vérifie si le user passé en paramètre correspond
      * a l'iun des user de la conversation
      */
-    public function checkForUser(User $user)
+    public function checkForUser($user)
     {
-        return $this->users->contains($user);
+        return $user && $this->users->contains($user);
     }
 }

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for chat in chats %}
+        <p>{{ chat.conversation }} - <a href="{{ path('conversations_get', { 'id' : chat.id }) }}">Voir le chat</a></p>
+    {% endfor %}
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
