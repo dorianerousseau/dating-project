@@ -15,7 +15,7 @@
                              <img src="{{ asset('uploads/images/'~ user.featuredImage) }}"
                                   alt="{{ user.pseudo }}" class="card-img-top" style="object-fit: cover; object-position: top;" width="230" height="300">
                              <div class="card-body">
-                                 <h5 class="card-title">{{ user.pseudo ~ ' | ' ~ user.age ~ ' ans' ~ ' | ' ~ user.city }}</h5>
+                                 <h5 class="card-title">{{ user.pseudo | title ~ ' | ' ~ user.age ~ ' ans' ~ ' | ' ~ user.city | title }}</h5>
                                  <hr>
                                  <p class="card-text">{{ user.bio }}</p>
                                  <a href="{{ path('conversation_create', {
@@ -25,7 +25,6 @@
                          </div> <!-- /.card -->
                      </div> <!-- /.col-md-4 -->
                  {% endfor %}
-
              </div> <!-- /.row -->
          </div> <!-- /.container -->
      </div> <!-- /.py-5 -->

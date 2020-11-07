@@ -1,4 +1,4 @@
-{%  extends "base.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block body %}
 
@@ -15,12 +15,16 @@
                     <div class="col-md-4 mt-4">
                         <div class="card shadow-sm">
                             <img src="{{ asset('uploads/images/'~ user.featuredImage) }}"
-                                 alt="{{ user.pseudo }}" class="card-img-top">
+                                 alt="{{ user.pseudo }}" class="card-img-top"
+                                 style="object-fit: cover; object-position: top;" width="230" height="300">
                             <div class="card-body">
-                                <h5 class="card-title">{{ user.pseudo | title }}</h5>
+                                <h5 class="card-title">{{ user.pseudo | title ~ ' | ' ~ user.age ~ ' ans' ~ ' | ' ~ user.city | title }}</h5>
+                                <hr>
+                                <p class="card-text">{{ user.bio }}</p>
                                 <a href="{{ path('conversation_create', {
                                     'id' : user.id
-                                }) }}" class="btn btn-outline-primary"> <i class="far fa-comments"></i> Message en privé </a>
+                                }) }}" class="btn btn-outline-primary"> <i class="far fa-comments"></i> Message en privé
+                                </a>
                             </div> <!-- /.card-body -->
                         </div> <!-- /.card -->
                     </div> <!-- /.col-md-4 -->

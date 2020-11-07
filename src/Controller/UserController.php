@@ -40,9 +40,9 @@ class UserController extends AbstractController
 
         # 2. Création du Formulaire d'inscription
         $form = $this->createFormBuilder($user)
-            ->add('pseudo', TextType::class,["label"=>"Pseudo"])
-            ->add('age', TextType::class,["label"=>"Age"])
-            ->add('sex', ChoiceType::class, [
+            ->add('pseudo', TextType::class)
+            ->add('age', TextType::class)
+            ->add('sex', ChoiceType::class, ['label' => 'Sexe',
                 'choices' => [
                     'Choisissez' => true,
                     'Femme' => 'Femme',
@@ -53,35 +53,23 @@ class UserController extends AbstractController
                     if (true === $choice) {
                         return 'Choisissez';
                     }
-
                     return ($key);
-
                 }
-            ])# liste déroulante (h /f)
-
-            ->add('hobbies', EntityType::class, [
+            ]) #liste déroulante (h/f)
+            ->add('hobbies', EntityType::class, ['label' => 'Loisirs',
                 'class' => Hobbies::class,
                 'multiple' => true,
                 'choice_label' => 'name',
             ])
-            ->add('city', TextType::class)
-
-            ->add('hobbies', EntityType::class, [
-                'class' => Hobbies::class,
-                'multiple' => true,
-                'choice_label' => 'name',
-            ])
-
-
+            ->add('city', TextType::class,['label'=>'Ville'])
             ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
-            ->add('featuredImage', FileType::class, [
+            ->add('password', PasswordType::class,['label'=>'Mot de passe'])
+            ->add('featuredImage', FileType::class, ['label' => 'Photo de profil',
                 'attr' => [
                     'class' => 'dropify'
                 ]
             ])
-            ->add('submit', SubmitType::class,[
-                "label"=>"Valider"])
+            ->add('submit', SubmitType::class,['label'=>'Valider'])
             ->getForm();
 
         # 3. Récupération des infos
@@ -119,11 +107,6 @@ class UserController extends AbstractController
                 # on stock dans la BDD
                 $user->setFeaturedImage($newFilename);
             }
-
-
-
-
-
 
             # 4d. on sauvegarde en BDD
             $em = $this->getDoctrine()->getManager();
