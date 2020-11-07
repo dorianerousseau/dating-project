@@ -15,11 +15,9 @@ class DefaultController extends AbstractController
 {
     /**
      * Page Index : quand on arrive sur le site
-     *
      */
     public function index()
     {
-        #retourne l'
         if($this->getUser()){
             return $this->redirectToRoute('default_homepage');
         }
@@ -35,20 +33,13 @@ class DefaultController extends AbstractController
     {
         # Récupére les 10 derniers profils de la BDD par ordre décroissant
         $users = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findProfils($this->getUser()->getId());
+            ->getRepository(User::class)
+            ->findProfils($this->getUser()->getId());
 
         return $this->render('default/homepage.html.twig', [
             'users' => $users
         ]);
     }
-
-    # TODO
-    /**
-     * Page / Action : Contact
-     */
-    # public function contact()
-    #{return $this->render('default/contact.html.twig');}
 
     /**
      * Page / Action : Hobbies

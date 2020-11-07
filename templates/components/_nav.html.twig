@@ -19,8 +19,8 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ path('default_hobbies', { 'alias' : 'musique' }) }}"><i
-                                class="fas fa-music"></i> Musique</a>
+                       href="{{ path('default_hobbies', { 'alias' : 'musique' }) }}">Musique <i
+                                class="fas fa-music"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
@@ -49,9 +49,8 @@
             </ul>
 
 
-            <!-- Nav menu with user information -->
+            <!-- Nav menu avec les informations de l'utilisateur -->
             <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
-                <!-- si l'utilisateur est connecté -->
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a href="javascript:void(0);" class="btn-user dropdown-header media align-items-center"
                        data-toggle="dropdown"
@@ -65,21 +64,6 @@
                         <a class="dropdown-item" href="{{ path('default_mesconvs') }}">Mes conversations</a>
                         <a class="dropdown-item" href="{{ path('profile_update') }}">Paramètres</a>
                         <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
-                    </ul>
-                    <!-- si l'utilisateur n'est pas connecté -->
-                {% else %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{{ path('user_create') }}">
-                                <button class="btn btn-light my-2 my-sm-0">Inscription</button>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{ path('app_login') }}">
-                                <button class="btn btn-info my-2 my-sm-0">Connexion</button>
-                            </a>
-                        </li>
                     </ul>
                 {% endif %}
             </div>

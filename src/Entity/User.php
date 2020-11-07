@@ -55,9 +55,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=3)
-     * @Assert\NotBlank(message="N'oubliez pas votre age.")
+     * @Assert\NotBlank(message="N'oubliez pas votre âge.")
      * @Assert\GreaterThanOrEqual(
-     *     value = 18, message="Vous devez avoir plus de 18 ans pour vous inscrire sur AppyLove.")
+     *     value = 18, message="Vous devez avoir 18 ans ou plus pour vous inscrire sur AppyLove.")
      */
     private $age;
 
@@ -78,7 +78,6 @@ class User implements UserInterface
     private $chats;
 
     /**
-     * @Assert\NotBlank(message="N'oubliez pas votre ou vos hobbies.")
      * @ORM\ManyToMany(targetEntity=Hobbies::class, inversedBy="users")
      */
     private $hobbies;
