@@ -16,11 +16,9 @@ class DefaultController extends AbstractController
 {
     /**
      * Page Index : quand on arrive sur le site
-     *
      */
     public function index()
     {
-
         if($this->getUser()){
             return $this->redirectToRoute('default_homepage');
         }
@@ -43,13 +41,6 @@ class DefaultController extends AbstractController
             'users' => $users
         ]);
     }
-
-    # TODO
-    /**
-     * Page / Action : Contact
-     */
-    # public function contact()
-    #{return $this->render('default/contact.html.twig');}
 
     /**
      * Page / Action : Hobbies

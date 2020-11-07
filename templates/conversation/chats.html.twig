@@ -1,12 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{# {% block body %}
     {% for chat in chats %}
         <p>{{ chat.conversation }} - <a href="{{ path('conversations_get', { 'id' : chat.id }) }}">Voir le chat</a></p>
     {% endfor %}
+{% endblock %} #}
+
+{% block title %}Boîte de réception • AppyLove{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h3 class=" text-center">Vos conversations</h3>
+    <div class="messaging">
+        <div class="inbox_msg">
+            <!-- partie historique-->
+            <div class="inbox_people">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>Récents</h4>
+                    </div>
+                </div>
+
+                <div class="inbox_chat">
+                    <div class="chat_list">
+                        {% for chat in chats %}
+                            <div class="chat_people">
+                                {# <div class="chat_img"><img
+                                                src="{{ asset("uploads/images/" ~ app.user.featuredImage) }}"
+                                                style="object-fit: cover; object-position: top;" alt="avatar"></div> #}
+                                <div class="chat_ib">
+                                    <h5>{{ chat.conversation }} <span
+                                                class="chat_date">{{ chat.createdAt| date('d/m') }}</span></h5>
+                                    <a href="{{ path('conversations_get', { 'id' : chat.id }) }}">Voir la
+                                        conversation</a>
+                                    <hr>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div><!-- /.chat_list -->
+                </div><!-- /.inbox_chat -->
+            </div><!-- /.inbox_people -->
+
+        </div> <!-- /.inbox_msg -->
+    </div> <!-- /.messaging -->
+</div> <!-- /.container -->
 {% endblock %}
-
-{% block title %}
-
-{% endblock %}
-
