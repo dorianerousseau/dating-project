@@ -31,8 +31,12 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             # 4a. on sauvegarde en BDD
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
+            /*
+            * Qu'est ce que le Entity Manager (em) ?
+            * C'est une classe qui sait comment sauvegarder d'autres classes.
+            */
+            $em = $this->getDoctrine()->getManager(); # Récupération de l' Entity Manager
+            $em->flush(); # Exécution
 
             # 4b. Notification Flash
             $this->addFlash('notice', 'Votre profil est mis à jour');
@@ -55,15 +59,18 @@ class ProfileController extends AbstractController
      */
     public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        # On verifie qu'on est en methode post
         if ($request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
 
+            #on récupere le user pour récuperer son ancien mdp
             $user = $this->getUser();
 
-            // On vérifie si les 2 mots de passe sont identiques
+            #On vérifie si les 2 mots de passe sont identiques
             if ($request->request->get('mdp') == $request->request->get('mdp2')) {
+                #On va pour voir encoder l'un des mdp pour le stocker
                 $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('mdp')));
-                $em->flush();
+                $em->flush(); # pour le mettre a jour dans la bdd
                 $this->addFlash('notice', 'votre mot de passe a été mis à jour');
 
                 return $this->redirectToRoute('profile_update');
