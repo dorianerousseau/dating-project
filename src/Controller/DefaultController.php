@@ -33,8 +33,8 @@ class DefaultController extends AbstractController
     {
         # Récupére les 10 derniers profils de la BDD par ordre décroissant
         $users = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findProfils($this->getUser()->getId());
+            ->getRepository(User::class)
+            ->findProfils($this->getUser()->getId());
 
         return $this->render('default/homepage.html.twig', [
             'users' => $users
