@@ -34,8 +34,8 @@ class DefaultController extends AbstractController
     {
         # Récupére les 10 derniers profils de la BDD par ordre décroissant
         $users = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findProfils($this->getUser()->getId());
+            ->getRepository(User::class)
+            ->findProfils($this->getUser()->getId());
 
         return $this->render('default/homepage.html.twig', [
             'users' => $users
@@ -59,7 +59,10 @@ class DefaultController extends AbstractController
          * (ManyToMany), je suis en mesure de récupérer
          * les utilisateurs selon leurs hobbies
          */
-        $users = $hobbies->getUsers();
+        $users = $hobbies->getUsers()->filter(function($user) {
+            return $user->getId() !== $this->getUser()->getId();
+        });
+
 
         return $this->render('default/hobbies.html.twig', [
             'users' => $users
