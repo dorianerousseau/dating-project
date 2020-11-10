@@ -58,7 +58,7 @@
             <!-- Nav menu avec les informations de l'utilisateur -->
             <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-<<<<<<< Updated upstream
+
                     <a href="javascript:void(0);" class="btn-user dropdown-header media align-items-center"
                        data-toggle="dropdown"
                        data-sidebar="true" aria-expanded="false">
@@ -67,11 +67,7 @@
                              style="object-fit: cover; object-position: top;" alt="avatar">
                         <i class="fas fa-ellipsis-v"></i>
                     </a>
-=======
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="nav-link" href="{{ path('profil_update') }}">Modifier le profil</a>
-                    {% endif %}
->>>>>>> Stashed changes
+
 
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                         <a class="dropdown-item" href="{{ path('default_mesconvs') }}">Mes conversations</a>
