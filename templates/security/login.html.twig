@@ -13,7 +13,7 @@
 
                 <form method="post">
                     {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security')|replace({"Invalid credentials." : "Votre mot de passe est incorrect."}) }}</div>
                     {% endif %}
 
                     {% if app.user %}
